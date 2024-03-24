@@ -1,0 +1,61 @@
+@mixin margin-right($rem, $marg, $t) {
+  @if ($t== "left-r") {
+    margin-left: $marg + $rem + rem + " !important";
+  }
+  @if ($t== "right-r") {
+    margin-right: $marg + $rem + rem + " !important";
+  }
+  @if ($t== "top-r") {
+    margin-top: $marg + $rem + rem + " !important";
+  }
+  @if ($t== "bottom-r") {
+    margin-bottom: $marg + $rem + rem + " !important";
+  }
+  @if($t=="none") {
+    margin: $marg + $rem + rem !important;
+  }
+}
+
+@mixin padding($rem, $pad, $t) {
+  @if ($t== "left-r") {
+    padding-left: $pad + $rem + rem + " !important";
+  }
+  @if ($t== "right-r") {
+    padding-right: $pad + $rem + rem + " !important";
+  }
+  @if ($t== "top-r") {
+    padding-top: $pad + $rem + rem + " !important";
+  }
+  @if ($t== "bottom-r") {
+    padding-bottom: $pad + $rem + rem + " !important";
+  }
+  @if($t=="none") {
+    margin: $pad + $rem + rem !important;
+  }
+}
+
+$step: 25;
+$max: 75;
+
+@each $t in "left-r", "right-r", "top-r", "bottom-r" {
+  @for $i from 0 through 4 {
+    @for $j from 1 through calc($max/$step) {
+      $w: ($j * $step);
+      @if ($i==0) {
+        .mc-margin-#{$t}#{$i}-#{$w%100} {
+          @include margin-right(calc($w/100), 0, $t);
+        }
+        .mc-padding-#{$t}#{$i}-#{$w%100} {
+          @include padding(calc($w/100), 0, $t);
+        }
+      } @else {
+        .mc-margin-#{$t}#{$i}-#{$w%100} {
+          @include margin-right(calc($w/100), $i, $t);
+        }
+        .mc-padding-#{$t}#{$i}-#{$w%100} {
+          @include padding(calc($w/100), $i, $t);
+        }
+      }
+    }
+  }
+}
