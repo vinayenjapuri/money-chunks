@@ -1,4 +1,4 @@
-@mixin margin-right($rem, $marg, $t) {
+@mixin margin($rem, $marg, $t) {
   @if ($t== "left-r") {
     margin-left: $marg + $rem + rem + " !important";
   }
@@ -29,9 +29,13 @@
   @if ($t== "bottom-r") {
     padding-bottom: $pad + $rem + rem + " !important";
   }
-  @if($t=="none") {
-    margin: $pad + $rem + rem !important;
+  @if ($t=="none") {
+    padding: $pad + $rem + rem !important;
   }
+}
+
+@mixin font($size) {
+  font-size: $size + px !important;
 }
 
 $step: 25;
@@ -43,14 +47,14 @@ $max: 75;
       $w: ($j * $step);
       @if ($i==0) {
         .mc-margin-#{$t}#{$i}-#{$w%100} {
-          @include margin-right(calc($w/100), 0, $t);
+          @include margin(calc($w/100), 0, $t);
         }
         .mc-padding-#{$t}#{$i}-#{$w%100} {
           @include padding(calc($w/100), 0, $t);
         }
       } @else {
         .mc-margin-#{$t}#{$i}-#{$w%100} {
-          @include margin-right(calc($w/100), $i, $t);
+          @include margin(calc($w/100), $i, $t);
         }
         .mc-padding-#{$t}#{$i}-#{$w%100} {
           @include padding(calc($w/100), $i, $t);
@@ -58,4 +62,58 @@ $max: 75;
       }
     }
   }
+}
+
+@mixin width($num) {
+  width: #{$num}#{"%"} + " !important";
+}
+
+@mixin color($color) {
+  color: #{"#"}#{$color} !important;
+}
+
+@mixin background($background) {
+  background: #{"#"}#{$background} !important;
+}
+
+@for $i from 1 through 4 {
+  .mc-margin-r#{$i} {
+    @include margin($i, 0, "none");
+  }
+  .mc-padding-r#{$i} {
+    @include padding($i, 0, "none");
+  }
+}
+
+@each $color in "fefe", "303134", "f0f4f9", "fefefe", "1e7fddb", "1e1e", "1e1e1e", "000", "fff", "626262", "f1f1f1", "111111" {
+  .color-#{$color} {
+    @include color($color);
+  }
+  .background-#{$color} {
+    @include background($color);
+  }
+}
+
+@for $u from 8 through 32 {
+  .font-#{$u} {
+    @include font($u);
+  }
+}
+
+@for $width from 1 through 100 {
+  .w-#{$width} {
+    @include width($width);
+  }
+}
+
+.underline-text {
+  text-decoration: underline !important;
+}
+
+.active {
+  color: #1e7ddb !important;
+  @extend .underline-text;
+}
+.underline-button:hover {
+  text-decoration: underline !important;
 }

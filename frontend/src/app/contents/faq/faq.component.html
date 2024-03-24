@@ -1,0 +1,25 @@
+<div class="mc-padding-r2 color-fefe" fxLayout="column" fxLayoutGap="1rem">
+  <mc-input label="Have questions? search for it!"
+            [formControl]="faqControl"
+            placeholder="Ex: How does Money Chunks work?"></mc-input>
+  <span class="font-18">Contents:</span>
+  <mat-divider></mat-divider>
+  @if(showLoadingContent) {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  }
+  @if (searchedFaqContent && searchedFaqContent.length > 0) {
+    @for(content of searchedFaqContent; track content.question) {
+      <mat-expansion-panel class="background-303134 color-fefe" [expanded]="faqControl.value!=null">
+        <mat-expansion-panel-header>
+          <span>{{content.question}}</span>
+        </mat-expansion-panel-header>
+        {{content.answer}}
+      </mat-expansion-panel>
+    }
+  } @else {
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <h1>Query not found?</h1>
+      <button mat-raised-button class="font-14" color="primary">Raise a Query!</button>
+    </div>
+  }
+</div>

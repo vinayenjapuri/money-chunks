@@ -1,0 +1,24 @@
+<div class="mc-padding-r2 login-card background-f0f4f9" [style.height.%]="100" fxLayout="column" fxLayoutAlign="center center">
+  @if (login) {
+    <mat-card class="background-fff color-1e1e1e">
+      <mat-card-header fxLayout="row" fxLayoutAlign="center start">Login</mat-card-header>
+      <mat-card-subtitle >
+        Note:
+        <span [style.font-weight]="400">
+          Please do not use VPN. If we find any suspicious activity on this IP Address. This will terminate your account and your IP Address would be banned.
+        </span>
+        </mat-card-subtitle>
+      <mat-card-content class="mc-margin-bottom-r1-25">
+        <mc-input label="Username/Email" type="text" placeholder="Enter Username/Email"></mc-input>
+        <mc-input label="Password" type="password" placeholder="Enter Password"></mc-input>
+      </mat-card-content>
+      <mat-card-actions fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+        <button mat-flat-button class="w-100" color="warn">Login</button>
+        <button mat-raised-button color="primary" class="w-100">Sign Up</button>
+      </mat-card-actions>
+    </mat-card>
+  }
+  @if (signUp) {
+
+  }
+</div>

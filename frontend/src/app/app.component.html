@@ -1,1 +1,15 @@
-<div class="mc-padding-right-r4">Test</div>
+@if (!login && !signUp) {
+  <div class="mc-padding-r1" fxLayout="row" fxLayoutAlign="start center">
+    <span fxFlex>Money Chunks</span>
+    <span fxLayout="row" fxLayoutGap="10px">
+      @for (b of contents; track b) {
+        <button class="underline-button" mat-stroked-button color="warn" [ngClass]="{'active': currentContent===b}" (click)="onNavigate(b)">
+          {{ b }}
+        </button>
+      }
+      <button mat-raised-button class="background-303134 color-fefe" (click)="onLogin()">Login</button>
+      <button mat-raised-button color="primary" (click)="onSignup()">Signup!</button>
+    </span>
+  </div>
+}
+<router-outlet></router-outlet>

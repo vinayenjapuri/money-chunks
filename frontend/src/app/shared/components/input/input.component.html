@@ -1,1 +1,5 @@
-<p>input works!</p>
+<mat-form-field appearance="fill" [style.width.%]="100">
+  <mat-label>{{label}}
+  </mat-label>
+  <input matInput [type]="type" [placeholder]="placeholder" [formControl]="control" (keydown)="onTextChanges()"/>
+</mat-form-field>

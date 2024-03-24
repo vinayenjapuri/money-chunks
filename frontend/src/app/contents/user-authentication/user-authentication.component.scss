@@ -1,0 +1,23 @@
+::ng-deep {
+  .mdc-button {
+    height: 36px !important;
+  }
+  .login-card .mat-mdc-card {
+    width: 70%;
+    height: 450px;
+    border-radius: 25px;
+    padding: 1rem;
+    & .mat-mdc-card-header {
+      font-size: 36px;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    & .mat-mdc-card-subtitle {
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    & .mdc-card__actions {
+      padding: 1rem;
+    }
+  }
+}
